@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test EmailJS - Jeu des 7 clés</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body style="background:#0b0b0b;color:#e8d18f;font-family:system-ui;text-align:center;padding-top:80px;">
+  <h2>Test EmailJS 🔑</h2>
+  <button id="send" style="padding:10px 20px;border:none;background:#e8d18f;color:#0b0b0b;font-weight:bold;border-radius:6px;cursor:pointer;">
+    Envoyer un email test
+  </button>
+
+  <script>
+    // Initialise EmailJS avec ta clé publique
+    emailjs.init({ publicKey: "TA_PUBLIC_KEY_ICI" });
+
+    document.getElementById("send").addEventListener("click", async () => {
+      try {
+        const params = {
+          puzzle_id: "1",
+          puzzle_title: "Clé du Portail",
+          timestamp: new Date().toISOString(),
+          user_agent: navigator.userAgent,
+        };
+
+        const res = await emailjs.send(
+          "service_xxxxxxx",      // ton Service ID
+          "template_m49xxnx",     // ton Template ID
+          params
+        );
+
+        alert("✅ Email envoyé avec succès !");
+        console.log("Succès :", res);
+      } catch (err) {
+        alert("❌ Erreur d’envoi (voir console)");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
