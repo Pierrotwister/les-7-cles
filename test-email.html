@@ -1,41 +1,67 @@
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('send');
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test EmailJS - Jeu des 7 cles</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <style>
+    body { background:#0b0b0b; color:#e8d18f; font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+           display:flex; align-items:center; justify-content:center; min-height:100vh; flex-direction:column; }
+    button { padding:10px 20px; border:none; background:#e8d18f; color:#0b0b0b; font-weight:700;
+             border-radius:6px; cursor:pointer; }
+    h2 { margin-bottom:16px; }
+  </style>
+</head>
+<body>
+  <h2>Test EmailJS</h2>
+  <button id="send">Envoyer un email test</button>
 
-    btn.addEventListener('click', async () => {
-      btn.disabled = true; btn.textContent = 'Envoi...';
+  <script>
+    // ---------- CONFIG ----------
+    const PUBLIC_KEY  = "QxrbnTrOdkevpQR0h";    // ta public key EmailJS
+    const SERVICE_ID  = "service_45nppfp";      // ton service id exact
+    const TEMPLATE_ID = "template_m49xxnx";     // ton template id exact
+    const TO_EMAIL    = "gernez.pierre@gmail.com";
 
-      // ⚠️ Paramètres envoyés — couvre 99% des templates
-      const params = {
-        puzzle_id: '1',
-        puzzle_title: 'Clé du Portail',
-        timestamp: new Date().toISOString(),
-        user_agent: navigator.userAgent,
+    // ---------- CODE ----------
+    window.addEventListener("load", function () {
+      console.log("Page loaded, initializing EmailJS...");
+      // init simple (forme sans objet pour eviter toute confusion)
+      emailjs.init(PUBLIC_KEY);
+      console.log("EmailJS init OK");
 
-        // destinataire & meta (même si ton template a déjà To Email)
-        to_email: 'gernez.pierre@gmail.com',
-        from_name: 'Jeu des 7 clés',
-        reply_to: 'no-reply@pierrotwister.github.io'
-      };
+      const btn = document.getElementById("send");
+      btn.addEventListener("click", async function () {
+        btn.disabled = true;
+        btn.textContent = "Envoi...";
 
-      try {
-        // ✅ Public Key passée en 4e argument (pas besoin de emailjs.init)
-        const res = await emailjs.send(
-          'service_45nppfp',     // Service ID EXACT
-          'template_m49xxnx',    // Template ID EXACT (corrigé)
-          params,
-          'QxrbnTrOdkevpQR0h'    // ⚠️ TA PUBLIC KEY
-        );
-        alert('✅ Email envoyé !');
-        console.log(res);
-      } catch (err) {
-        alert('❌ Erreur d’envoi (voir console)');
-        console.error('EmailJS error:', err);
-        if (err?.status || err?.text) console.error('Status:', err.status, 'Text:', err.text);
-      } finally {
-        btn.disabled = false; btn.textContent = 'Envoyer un email test';
-      }
+        const params = {
+          puzzle_id: "1",
+          puzzle_title: "Cle du Portail",
+          timestamp: new Date().toISOString(),
+          user_agent: navigator.userAgent,
+          to_email: TO_EMAIL,
+          from_name: "Jeu des 7 cles",
+          reply_to: "no-reply@pierrotwister.github.io"
+        };
+
+        try {
+          const res = await emailjs.send(SERVICE_ID, TEMPLATE_ID, params, PUBLIC_KEY);
+          alert("Email envoye !");
+          console.log("EmailJS success:", res);
+        } catch (err) {
+          alert("Erreur d'envoi (voir console)");
+          console.error("EmailJS error:", err);
+          if (err && (err.status || err.text)) {
+            console.error("Status:", err.status, "Text:", err.text);
+          }
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Envoyer un email test";
+        }
+      });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
