@@ -6,10 +6,9 @@
   <title>Test EmailJS - Jeu des 7 cles</title>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
-    body { background:#0b0b0b; color:#e8d18f; font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+    body { background:#0b0b0b; color:#e8d18f; font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;
            display:flex; align-items:center; justify-content:center; min-height:100vh; flex-direction:column; }
-    button { padding:10px 20px; border:none; background:#e8d18f; color:#0b0b0b; font-weight:700;
-             border-radius:6px; cursor:pointer; }
+    button { padding:10px 20px; border:none; background:#e8d18f; color:#0b0b0b; font-weight:700; border-radius:6px; cursor:pointer; }
     h2 { margin-bottom:16px; }
   </style>
 </head>
@@ -17,25 +16,23 @@
   <h2>Test EmailJS</h2>
   <button id="send">Envoyer un email test</button>
 
+  <!-- Place le script APRES le bouton -->
   <script>
-    // ---------- CONFIG ----------
-    const PUBLIC_KEY  = "QxrbnTrOdkevpQR0h";    // ta public key EmailJS
-    const SERVICE_ID  = "service_45nppfp";      // ton service id exact
-    const TEMPLATE_ID = "template_m49xxnx";     // ton template id exact
+    const PUBLIC_KEY  = "QxrbnTrOdkevpQR0h";
+    const SERVICE_ID  = "service_45nppfp";
+    const TEMPLATE_ID = "template_m49xxnx";
     const TO_EMAIL    = "gernez.pierre@gmail.com";
 
-    // ---------- CODE ----------
-    window.addEventListener("load", function () {
-      console.log("Page loaded, initializing EmailJS...");
-      // init simple (forme sans objet pour eviter toute confusion)
-      emailjs.init(PUBLIC_KEY);
-      console.log("EmailJS init OK");
+    // init (forme simple)
+    emailjs.init(PUBLIC_KEY);
 
-      const btn = document.getElementById("send");
-      btn.addEventListener("click", async function () {
-        btn.disabled = true;
-        btn.textContent = "Envoi...";
-
+    // récupère le bouton maintenant qu'il existe
+    const btn = document.getElementById("send");
+    if (!btn) {
+      console.error("Bouton #send introuvable");
+    } else {
+      btn.addEventListener("click", async () => {
+        btn.disabled = true; btn.textContent = "Envoi...";
         const params = {
           puzzle_id: "1",
           puzzle_title: "Cle du Portail",
@@ -45,23 +42,19 @@
           from_name: "Jeu des 7 cles",
           reply_to: "no-reply@pierrotwister.github.io"
         };
-
         try {
           const res = await emailjs.send(SERVICE_ID, TEMPLATE_ID, params, PUBLIC_KEY);
-          alert("Email envoye !");
-          console.log("EmailJS success:", res);
+          alert("✅ Email envoye !");
+          console.log(res);
         } catch (err) {
-          alert("Erreur d'envoi (voir console)");
+          alert("❌ Erreur d’envoi (voir console)");
           console.error("EmailJS error:", err);
-          if (err && (err.status || err.text)) {
-            console.error("Status:", err.status, "Text:", err.text);
-          }
+          if (err?.status || err?.text) console.error("Status:", err.status, "Text:", err.text);
         } finally {
-          btn.disabled = false;
-          btn.textContent = "Envoyer un email test";
+          btn.disabled = false; btn.textContent = "Envoyer un email test";
         }
       });
-    });
+    }
   </script>
 </body>
 </html>
