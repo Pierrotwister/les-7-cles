@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Les 7 Clés Invisibles</title>
+  <meta name="description" content="Un jeu d’énigmes poétique. 7 clés. Une à la fois." />
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="head">
+      <div class="logo">✶</div>
+      <h1>Les 7 Clés Invisibles</h1>
+      <p class="subtitle">« Certains cadeaux se laissent apprivoiser. D’autres se déchiffrent. »</p>
+    </header>
+
+    <section class="card">
+      <p class="poem">
+        Sept clés dorment dans l’ombre.<br>
+        Le silence te soufflera la première.<br>
+        Une seule règle : la curiosité.
+      </p>
+
+      <button class="btn" onclick="startGame()">Commencer</button>
+    </section>
+
+    <footer class="foot">
+      <small>🐾</small>
+    </footer>
+  </main>
+
+  <script>
+    function startGame() {
+      // Réinitialise la progression locale si besoin
+      localStorage.setItem('unlocked', JSON.stringify({ "1": true }));
+      window.location.href = 'puzzle.html?id=1';
+    }
+  </script>
+</body>
+</html>
