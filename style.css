@@ -1,0 +1,67 @@
+:root {
+  --bg: #0a0a0a;
+  --fg: #f6f3ea;
+  --muted: #c9c3b2;
+  --gold: #d4af37;
+  --shadow: 0 10px 25px rgba(0,0,0,.45);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 48px; }
+.head { text-align: center; margin: 20px 0 24px; }
+.head.small { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+.back { color: var(--gold); text-decoration: none; font-size: 20px; justify-self: start; }
+.logo { font-size: 28px; color: var(--gold); }
+h1 { margin: 8px 0 6px; font-weight: 600; letter-spacing: .3px; }
+.subtitle { margin: 0; color: var(--muted); }
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border: 1px solid rgba(212,175,55,.35);
+  border-radius: 18px;
+  padding: 22px 20px;
+  box-shadow: var(--shadow);
+}
+
+.poem, .riddle { line-height: 1.7; font-size: 18px; }
+.riddle { margin-top: 8px; }
+
+.answer { margin-top: 16px; display: grid; gap: 10px; }
+label { color: var(--muted); font-size: 13px; }
+input[type="text"] {
+  background: #111;
+  border: 1px solid rgba(212,175,55,.45);
+  border-radius: 12px;
+  color: var(--fg);
+  padding: 12px 14px;
+  font-size: 16px;
+  outline: none;
+}
+input[type="text"]:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,.2); }
+
+.btn {
+  appearance: none;
+  background: var(--gold);
+  color: #0b0b0b;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform .06s ease-in-out, filter .2s ease;
+}
+.btn:hover { filter: brightness(1.05); }
+.btn:active { transform: translateY(1px); }
+
+.btn.ghost {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+
+.feedback { min-height: 20px; margin: 4px 0 0; color: var(--muted); }
+.foot { text-align: center; color: var(--muted); margin-top: 22px; }
+small { opacity: .9; }
