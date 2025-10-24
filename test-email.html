@@ -24,7 +24,7 @@
     // Attend que le DOM soit prêt (évite les problèmes "bouton introuvable")
     document.addEventListener('DOMContentLoaded', () => {
       // 1) Init EmailJS
-      emailjs.init({ publicKey: "QxrbnTrOdkevpQR0h" });        // <-- METS TA PUBLIC KEY
+      emailjs.init("QxrbnTrOdkevpQR0h"});        // <-- METS TA PUBLIC KEY
 
       // 2) Branche le clic sur le bouton
       const btn = document.getElementById("send");
@@ -40,7 +40,7 @@
         try {
           const res = await emailjs.send(
             "service_45nppfp",     // <-- METS TON SERVICE ID
-            "template_mx49xxnx",    // <-- METS TON TEMPLATE ID
+            "template_m49xxnx",    // <-- METS TON TEMPLATE ID
             params
           );
           alert("✅ Email envoyé !");
