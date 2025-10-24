@@ -35,7 +35,7 @@
           puzzle_title: "Clé du Portail",
           timestamp: new Date().toISOString(),
           user_agent: navigator.userAgent,
-          // to_email: "gernez.pierre@gmail.com" // utile si non défini dans le template
+          email: "gernez.pierre@gmail.com" // utile si non défini dans le template
         };
         try {
           const res = await emailjs.send(
