@@ -2,40 +2,56 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Test EmailJS - Jeu des 7 clés</title>
+
+  <!-- Charge la lib EmailJS (https, CDN officiel) -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <style>
+    body{background:#0b0b0b;color:#e8d18f;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;
+         display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column}
+    button{padding:10px 20px;border:none;background:#e8d18f;color:#0b0b0b;font-weight:700;
+           border-radius:6px;cursor:pointer}
+    h2{margin-bottom:16px}
+  </style>
 </head>
-<body style="background:#0b0b0b;color:#e8d18f;font-family:system-ui;text-align:center;padding-top:80px;">
+<body>
   <h2>Test EmailJS 🔑</h2>
-  <button id="send" style="padding:10px 20px;border:none;background:#e8d18f;color:#0b0b0b;font-weight:bold;border-radius:6px;cursor:pointer;">
-    Envoyer un email test
-  </button>
+  <button id="send">Envoyer un email test</button>
 
   <script>
-    // Initialise EmailJS avec ta clé publique
-    emailjs.init({ publicKey: "wvO20smkmA7KXEb30" });
+    // Attend que le DOM soit prêt (évite les problèmes "bouton introuvable")
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) Init EmailJS
+      emailjs.init({ publicKey: "wvO20smkmA7KXEb30" });        // <-- METS TA PUBLIC KEY
 
-    document.getElementById("send").addEventListener("click", async () => {
-      try {
+      // 2) Branche le clic sur le bouton
+      const btn = document.getElementById("send");
+      btn.addEventListener("click", async () => {
+        btn.disabled = true; btn.textContent = "Envoi...";
         const params = {
           puzzle_id: "1",
           puzzle_title: "Clé du Portail",
           timestamp: new Date().toISOString(),
           user_agent: navigator.userAgent,
+          // to_email: "ton@mail.fr" // utile si non défini dans le template
         };
-
-        const res = await emailjs.send(
-          "service_45nppfp",      // ton Service ID
-          "template_m49xxnx",     // ton Template ID
-          params
-        );
-
-        alert("✅ Email envoyé avec succès !");
-        console.log("Succès :", res);
-      } catch (err) {
-        alert("❌ Erreur d’envoi (voir console)");
-        console.error(err);
-      }
+        try {
+          const res = await emailjs.send(
+            "service_45nppfp",     // <-- METS TON SERVICE ID
+            "template_mx49xxnx",    // <-- METS TON TEMPLATE ID
+            params
+          );
+          alert("✅ Email envoyé !");
+          console.log(res);
+        } catch (err) {
+          alert("❌ Erreur d’envoi (voir console)");
+          console.error(err);
+        } finally {
+          btn.disabled = false; btn.textContent = "Envoyer un email test";
+        }
+      });
     });
   </script>
 </body>
