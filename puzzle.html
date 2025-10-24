@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clé — Les 7 Clés Invisibles</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="head small">
+      <a class="back" href="index.html" aria-label="Retour">←</a>
+      <div class="logo">✶</div>
+      <h1 id="puzzleTitle">Clé</h1>
+    </header>
+
+    <section class="card">
+      <p id="puzzleText" class="riddle"></p>
+
+      <form id="answerForm" class="answer">
+        <label for="answer">Ta réponse</label>
+        <input id="answer" type="text" autocomplete="off" required placeholder="écris le mot…" />
+        <button class="btn" type="submit">Déverrouiller</button>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer class="foot">
+      <small id="hint"></small>
+    </footer>
+  </main>
+
+  <script src="puzzles.js"></script>
+  <script src="email-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
