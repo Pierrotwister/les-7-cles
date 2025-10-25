@@ -41,9 +41,19 @@
   // Formulaire
   formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const val = normalize(inputEl.value);
-
+    const raw = inputEl.value;
+    const val = normalize(raw);
     if (!val) return;
+
+    // --- Mini-contrôle pour la Clé 3 ---
+    // Si elle écrit "cœur/coeur", on la guide doucement vers la sensation (chaleur/toucher)
+    if (PUZZLE.id === "3") {
+      if (val === "coeur" || val === "cœur") {
+        feedbackEl.textContent = "Tu y es presque… pense à ce qui réchauffe et que l’on sent sur la peau.";
+        return;
+      }
+    }
+    // ------------------------------------
 
     const isOk = PUZZLE.accepted.map(normalize).includes(val);
 
