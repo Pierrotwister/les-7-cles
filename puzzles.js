@@ -17,7 +17,7 @@ Quand on me tient, tout se pose un instant. »`,
 Je montre ce qu’on me donne, jamais ce qu’on me cache.
 Si tu me regardes avec douceur, tu te verras autrement. »`,
     accepted: ["miroir", "reflet"],
-    hint: "Regarder sans peur, c’est déjà commencer à guérir.",
+    hint: "Cherche ce qui réchauffe sans feu, ce qu’on sent sur la peau.",
     next: "3"
   },
   {
