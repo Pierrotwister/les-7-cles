@@ -26,7 +26,7 @@ Si tu me regardes avec douceur, tu te verras autrement. »`,
     riddle: `« Je ne parle pas, mais je réconforte.
 On me trouve dans un sourire, un regard, un geste simple.
 Je réveille la douceur quand le froid s’installe. »`,
-    accepted: ["chaleur", "toucher"],
+    accepted: ["chaleur", "toucher", "coeur", "douceur", "cœur", "tendresse"],
     hint: "Quand le corps se souvient, l’âme respire.",
     next: "4"
   },
