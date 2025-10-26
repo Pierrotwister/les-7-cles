@@ -31,7 +31,6 @@
         🐾 <em>Une seule règle&nbsp;: la curiosité.</em>
       </p>
 
-      <!-- Version inline : l'appel de la fonction dans le bouton -->
       <button class="btn" onclick="startGame()">Commencer le voyage</button>
     </section>
 
@@ -40,13 +39,12 @@
     </footer>
   </main>
 
-  <!-- Fonction JS intégrée -->
   <script>
     function startGame() {
       // Réinitialise la progression du joueur
       localStorage.setItem('unlocked', JSON.stringify({ "1": true }));
-      // Redirige vers la première clé
-      window.location.href = 'puzzle.html?id=1';
+      // Redirige vers la première clé : chemin complet requis sur GitHub Pages
+      window.location.href = '/les-7-cles/puzzle.html?id=1';
     }
   </script>
 </body>
