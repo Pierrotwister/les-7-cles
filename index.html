@@ -18,33 +18,39 @@
     </header>
 
     <section class="card">
-  <h2 style="color: var(--gold); font-weight: 500; margin-bottom: 12px;">
-    Les 7 Clés Invisibles
-  </h2>
+      <h2 style="color: var(--gold); font-weight: 500; margin-bottom: 12px;">
+        Les 7 Clés Invisibles
+      </h2>
 
-  <p class="poem" style="line-height: 1.8; margin-bottom: 24px;">
-    Il existe des chemins qu’on ne suit qu’une fois.<br><br>
-    Sept petites clés dorment dans l’ombre,<br>
-    attendant qu’une main curieuse les réveille.<br><br>
-    Rien à gagner, rien à prouver —<br>
-    juste un pas à la fois, dans la lumière qu’on trouve.<br><br>
-    🐾 <em>Une seule règle&nbsp;: la curiosité.</em>
-  </p>
+      <p class="poem" style="line-height: 1.8; margin-bottom: 24px;">
+        Il existe des chemins qu’on ne suit qu’une fois.<br><br>
+        Sept petites clés dorment dans l’ombre,<br>
+        attendant qu’une main curieuse les réveille.<br><br>
+        Rien à gagner, rien à prouver —<br>
+        juste un pas à la fois, dans la lumière qu’on trouve.<br><br>
+        🐾 <em>Une seule règle&nbsp;: la curiosité.</em>
+      </p>
 
-  <button class="btn" onclick="startGame()">Commencer le voyage</button>
-</section>
+      <!-- IMPORTANT: le bouton a un id et on évite le inline onclick -->
+      <button class="btn" id="startBtn">Commencer le voyage</button>
+    </section>
 
     <footer class="foot">
       <small>🐾</small>
     </footer>
   </main>
 
+  <!-- IMPORTANT: la fonction startGame est bien définie ici -->
   <script>
     function startGame() {
-      // Réinitialise la progression locale si besoin
+      // réinitialise la progression et envoie vers la clé 1
       localStorage.setItem('unlocked', JSON.stringify({ "1": true }));
       window.location.href = 'puzzle.html?id=1';
     }
+
+    // on attache l'événement au bouton (plus fiable que onclick en ligne)
+    const btn = document.getElementById('startBtn');
+    if (btn) btn.addEventListener('click', startGame);
   </script>
 </body>
 </html>
