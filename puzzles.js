@@ -38,6 +38,7 @@ Je tremble parfois, mais je tiens bon quand on ose me traverser.
 Je suis ce fil invisible entre la peur et le courage. »`,
     accepted: ["confiance"],
     hint: "Avancer, même si ça tremble.",
+    hint2: "Ce n’est pas du courage : c’est ce qui le rend possible. On la donne, on la gagne, on la perd parfois." 
     next: "5"
   },
   {
@@ -69,6 +70,7 @@ Ce n’est ni une promesse ni un serment,
 mais un souffle qui continue malgré tout. »`,
     accepted: ["vie", "guérison", "guerison", "amour"],
     hint: "Un mot simple, et pourtant…",
+    hint2: "Ce mot n’exige rien : il apaise, accepte et laisse vivre. Cherche ce qui soigne sans posséder.",
     next: null
   }
 ];
