@@ -38,7 +38,7 @@ Je tremble parfois, mais je tiens bon quand on ose me traverser.
 Je suis ce fil invisible entre la peur et le courage. »`,
     accepted: ["confiance"],
     hint: "Avancer, même si ça tremble.",
-    hint2: "Ce n’est pas du courage : c’est ce qui le rend possible. On la donne, on la gagne, on la perd parfois." 
+    hint2: "Ce n’est pas du courage : c’est ce qui le rend possible. On la donne, on la gagne, on la perd parfois.",
     next: "5"
   },
   {
